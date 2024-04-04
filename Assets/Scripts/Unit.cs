@@ -10,6 +10,10 @@ public class Unit : MonoBehaviour
 	float moveSpeed = 4f;
 	float rotateSpeed = 10f;
 
+	private void Awake()
+	{
+		targetPosition = transform.position;
+	}
 	private void Update()
 	{
 		if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
@@ -23,12 +27,9 @@ public class Unit : MonoBehaviour
 		else {
 		unitAnimator.SetBool("IsWalking", false);
 		}
-		if (Input.GetMouseButtonDown(0))
-		{
-			Move(MouseTracking.GetPosition());
-		}
+
 	}
-	private void Move(Vector3 targetPosition)
+	public void Move(Vector3 targetPosition)
 	{
 		this.targetPosition = targetPosition;
 	}
